@@ -1,0 +1,1 @@
+web: target/bin/startup.sh -clean -Dhttp.port=$PORT
