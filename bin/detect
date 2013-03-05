@@ -1,12 +1,5 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
+# bin/detect <build-dir>
 
-$:.unshift File.expand_path("../../lib", __FILE__)
-require "language_pack"
-
-if pack = LanguagePack.detect(ARGV.first)
-  puts pack.name
-  exit 0
-else
-  puts "no"
-  exit 1
-end
+echo "Virgo web"
+exit 0
