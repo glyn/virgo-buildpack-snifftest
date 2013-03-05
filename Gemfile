@@ -1,8 +1,6 @@
-source "https://rubygems.org"
+source :rubygems
 
-group :development, :test, :production do
-  gem "nokogiri", "1.5.6"
-end
+gem "nokogiri"
 
 group :test do
   gem "xml-simple", require: 'xmlsimple'

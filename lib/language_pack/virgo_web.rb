@@ -5,7 +5,7 @@ require "fileutils"
 module LanguagePack
   class VirgoWeb < Java
 
-    VIRGO_URL =  "http://virgo.eclipse.org.s3.amazonaws.com/virgo-tomcat-server-3.6.1.RELEASE.zip".freeze
+    VIRGO_URL =  "http://virgo.eclipse.org.s3.amazonaws.com/virgo-tomcat-server-3.6.1.RELEASE.tar.gz".freeze
     WEBAPP_DIR = "pickup/app.war/".freeze
 
     def self.use?
@@ -39,7 +39,7 @@ module LanguagePack
       download_virgo virgo_zip
 
       puts "Unpacking Virgo to #{virgo_dir}"
-      run_with_err_output("unzip #{virgo_zip} -d #{virgo_dir} && mv #{virgo_dir}/virgo-*/* #{virgo_dir} && " +
+      run_with_err_output("tar pxzf #{virgo_zip} -C #{virgo_dir} && mv #{virgo_dir}/virgo-*/* #{virgo_dir} && " +
               "rm -rf #{virgo_dir}/virgo-*")
       FileUtils.rm_rf virgo_zip
       unless File.exists?("#{virgo_dir}/bin/startup.sh")

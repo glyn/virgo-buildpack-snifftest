@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# bin/detect <build-dir>
-
-echo "Virgo web"
-exit 0
+SCRIPTDIR=$(cd "$( dirname "$0" )" && pwd)
+if ! gem list nokogiri -i >/dev/null 2>&1; then
+  gem install nokogiri --user-install
+  export PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
+ruby $SCRIPTDIR/detect.rb $1 $2
+exit $?
